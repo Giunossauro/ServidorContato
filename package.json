@@ -5,9 +5,9 @@
   "main": "src/index.ts",
   "type": "commonjs",
   "scripts": {
-    "start": "knex migrate:rollback && knex migrate:latest && rm -rf build/ && prettier --write src/ && tsc",
+    "start": "knex migrate:latest --verbose && knex seed:run && rm -rf build/ && prettier --write src/ && tsc",
     "dev": "nodemon src/index.ts",
-    "build": "knex migrate:rollback && knex migrate:latest && rm -rf build/ && prettier --write src/ && tsc"
+    "build": "knex migrate:latest --verbose && knex seed:run && rm -rf build/ && prettier --write src/ && tsc"
   },
   "author": "Giuliano Mitteroheffer Morelli",
   "license": "ISC",

@@ -23,7 +23,7 @@ router.use((req, res, next) => {
   );
 
   if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "GET PATCH DELETE POST");
+    res.header("Access-Control-Allow-Methods", "GET PUT DELETE POST");
     return res.status(200).json({});
   }
 

@@ -1,1 +1,1 @@
-web: knex migrate:rollback && knex migrate:latest && node src/index.js
+web: knex migrate:latest --verbose && knex seed:run && node src/index.js

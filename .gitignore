@@ -59,6 +59,3 @@ typings/
 
 # next.js build output
 .next
-
-# Database cheat-sheet
-*.sql

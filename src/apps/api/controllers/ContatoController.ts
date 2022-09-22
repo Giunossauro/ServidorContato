@@ -20,7 +20,7 @@ export class ContatoController {
 
   getContatos = async (req: any, res: any, next: any) => {
     const { senha } = req.body;
-
+    
     if (senha === process.env.SENHA_GET) {
       const result = await this.#service.getContatos();
 
@@ -42,12 +42,18 @@ export class ContatoController {
       return res.status(400).json({ result: "ERRO: ID inválido." });
     }
 
-    const result = await this.#service.getContatoById(
-      Number(id)
-    );
+    if (senha === process.env.SENHA_GET) {
+      const result = await this.#service.getContatoById(
+        Number(id)
+      );
 
-    return res.status(result.status).json({
-      result: result.msg,
+      return res.status(result.status).json({
+        result: result.msg,
+      });
+    }
+
+    return res.status(400).json({
+      result: "ERRO: Senha incorreta."
     });
   };
 

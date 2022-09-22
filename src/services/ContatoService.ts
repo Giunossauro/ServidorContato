@@ -90,24 +90,6 @@ export class ContatoService {
     tel: string,
     msg: string
   ) => {
-    try {
-      const findContato = await db.default
-        .select("*")
-        .from("contatos")
-        .where({ email: email });
-
-      if (findContato.length) {
-        return {
-          status: 409,
-          msg: "ERRO: Falha ao cadastrar Contato. Verifique email e tel.",
-        };
-      }
-    } catch (_e) {
-      return {
-        status: 500,
-        msg: "ERRO: Falha no servidor ao consultar se o Contato ja existe.",
-      };
-    }
 
     const newUser = {
       nome: nome,
